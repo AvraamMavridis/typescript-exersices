@@ -1,0 +1,47 @@
+{
+  "name": "js-exersices",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/jest": "^26.0.21",
+    "jest": "^24.9.0",
+    "jest-expect-message": "^1.0.2",
+    "nodemon": "^2.0.6",
+    "onchange": "^7.1.0",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-expect-message"
+    ],
+    "preset": "ts-jest/presets/js-with-ts",
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    },
+    "testEnvironment": "node",
+    "testRegex": ".*\\.spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    }
+  },
+  "nodemonConfig": {
+    "watch": [
+      "sandbox.(j|t)s",
+      "src/**/*.(j|t)s"
+    ],
+    "ignore": [
+      "src/**/*.spec.ts"
+    ],
+    "exec": "npm run start"
+  }
+}
