@@ -38,14 +38,16 @@ export class CrimeFiction extends Fiction {
   }
 }
 
-abstract class Reader {
+export class Reader {
   private _name: string;
 
   constructor(name: string){
     this._name = name;
   }
 
-  abstract likes(book: Book): boolean;
+  likes(book: Book): boolean {
+    return true;
+  }
 
   read(book: Book){
     let msg = this.likes(book) ? 'recommends reading' : 'does not recommend reading';

@@ -1,4 +1,4 @@
-import { NonFiction, Fiction, CrimeFiction, Academic, Child, Detective } from './RecommendedBooks';
+import { NonFiction, Fiction, CrimeFiction, Academic, Child, Detective, Reader } from './RecommendedBooks';
 
 describe('Recommended Books', () => {
   describe('books: ', () => {
@@ -25,7 +25,7 @@ describe('Recommended Books', () => {
 
       it('should be recommended for children when passed variable is true', () => {
         const title = 'A walk in the park';
-        const book = new Fiction(title, true);;
+        const book = new Fiction(title, true);
         expect(book.forChildren()).toBeTruthy();
       });
 
@@ -43,7 +43,7 @@ describe('Recommended Books', () => {
 
         expect(book instanceof CrimeFiction).toBeTruthy();
         expect(book instanceof Fiction).toBeTruthy();
-      })
+      });
 
       it('should have the correct title', () => {
         const title = 'The girl with the drago tattoo';
@@ -66,6 +66,19 @@ describe('Recommended Books', () => {
   });
 
   describe('readers: ', () => {
+    describe('Reader', () => {
+      it('should like every book', () => {
+        const book1 = new NonFiction('Factfullness');
+        const book2 = new Fiction('A walk in the park');
+        const book3 = new CrimeFiction('The girl with the dragon tatoo');
+        const reader = new Reader('Christina');
+
+        expect(reader.read(book1)).toBe('Christina recommends reading "Factfullness"');
+        expect(reader.read(book2)).toBe('Christina recommends reading "A walk in the park"');
+        expect(reader.read(book3)).toBe('Christina recommends reading "The girl with the dragon tatoo (best seller)"');
+      });
+    });
+
     describe('Academic', () => {
       it('should like NonFiction books', () => {
         const book = new NonFiction('Factfullness');
@@ -82,7 +95,9 @@ describe('Recommended Books', () => {
       it('should not like Crime books', () => {
         const book = new CrimeFiction('The girl with the dragon tatoo');
         const academic = new Academic('George');
-        expect(academic.read(book)).toBe('George does not recommend reading "The girl with the dragon tatoo (best seller)"');
+        expect(academic.read(book)).toBe(
+          'George does not recommend reading "The girl with the dragon tatoo (best seller)"',
+        );
       });
     });
 
@@ -107,12 +122,13 @@ describe('Recommended Books', () => {
         expect(detective.read(book)).toBe('Avraam recommends reading "A walk in the park"');
       });
 
-
       it('should not like Crime Fiction books', () => {
         const book = new CrimeFiction('The girl with the dragon tatoo');
         const detective = new Detective('Avraam');
-        expect(detective.read(book)).toBe('Avraam does not recommend reading "The girl with the dragon tatoo (best seller)"');
+        expect(detective.read(book)).toBe(
+          'Avraam does not recommend reading "The girl with the dragon tatoo (best seller)"',
+        );
       });
     });
-  })
-})
+  });
+});
