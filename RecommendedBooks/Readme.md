@@ -28,3 +28,6 @@ reading <title of book>` if they did not like the book.
 passed in Book is of type NonFiction and false otherwise.
 - `Child` derived class of Child that override likes such that it returns true only if `forChildrend` returns true for the given Book-parameter.
 - `Detective` derived class of Reader that override likes if the Book-parameter is __exactly__ of type Fiction. Recall; the detective does not want to bring home their work, so no crime fiction for the detective.
+
+
+This exersice is adapted from the C++ version of it, [source](https://www.ida.liu.se/~TDDD38/exam/old_exams/190821/TDDD38-190821.pdf)
