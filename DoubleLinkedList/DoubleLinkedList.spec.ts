@@ -166,7 +166,35 @@ describe('Double Linked List', () => {
       const root = list.getRoot();
       expect(root?.value).toBe(1);
       expect(root?.next?.value).toBe(2);
-      expect(root?.next?.next?.value).toBe(4);      
+      expect(root?.next?.next?.value).toBe(4);
+    });
+  });
+
+  describe('.concat(list)', () => {
+    it('should concatenate two linked lists', () => {
+      const list1 = new DoubleLinkedList<number>();
+      list1.addToEnd(1);
+      list1.addToEnd(2);
+
+      const list2 = new DoubleLinkedList<number>();
+      list2.addToEnd(3);
+      list2.addToEnd(4);
+
+      const newList = list1.concat(list2);
+      const root = newList?.getRoot();
+      const tail = newList?.getTail();
+
+      expect(newList?.size).toBe(4);
+
+      expect(root?.value).toBe(1);
+      expect(root?.next?.value).toBe(2);
+      expect(root?.next?.next?.value).toBe(3)
+      expect(root?.next?.next?.next?.value).toBe(4);
+
+      expect(tail?.value).toBe(4);
+      expect(tail?.prev?.value).toBe(3);
+      expect(tail?.prev?.prev?.value).toBe(2);
+      expect(tail?.prev?.prev?.prev?.value).toBe(1);
     });
   });
 });

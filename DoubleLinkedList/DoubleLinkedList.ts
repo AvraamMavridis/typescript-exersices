@@ -43,7 +43,7 @@ export default class DoubleLinkedList<T> {
     this._size++;
   }
 
-  at(index: number): ListNode<T> | null{
+  at(index: number): ListNode<T> | null {
     let v = this.root,
       len = 0;
 
@@ -57,11 +57,11 @@ export default class DoubleLinkedList<T> {
     return v || null;
   }
 
-  map(fun: (element: T, index: number) => T): DoubleLinkedList<T>{
+  map(fun: (element: T, index: number) => T): DoubleLinkedList<T> {
     let newList = new DoubleLinkedList<T>();
     let index = 0;
 
-    for(let el of this){
+    for (let el of this) {
       newList.addToStart(fun(el, index));
       index++;
     }
@@ -96,14 +96,31 @@ export default class DoubleLinkedList<T> {
 
   delete(index: number): void {
     const elementToDelete = this.at(index);
-    if(elementToDelete){
-      if(elementToDelete.prev){
+    if (elementToDelete) {
+      if (elementToDelete.prev) {
         elementToDelete.prev.next = elementToDelete.next;
       }
-      if(elementToDelete.next) {
+      if (elementToDelete.next) {
         elementToDelete.next.prev = elementToDelete.prev;
       }
     }
+  }
+
+  concat(list: DoubleLinkedList<T>) {
+    const rootList2 = list.getRoot();
+    const tailList1 = this.getTail();
+
+    if (tailList1) {
+      tailList1.next = rootList2;
+      this.tail = list.getTail();
+    }
+
+    if (rootList2) {
+      rootList2.prev = tailList1;
+    }
+
+    this._size = this._size + list.size;
+    return this;
   }
 
   *[Symbol.iterator]() {
