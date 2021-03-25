@@ -116,7 +116,7 @@ describe('Double Linked List', () => {
       list.addToEnd(2);
       list.addToEnd(3);
 
-      expect(list.at(2)).toEqual(3);
+      expect(list.at(2)?.value).toEqual(3);
     });
 
     it('should return null if we request element outside the list', () => {
@@ -134,7 +134,7 @@ describe('Double Linked List', () => {
       list.addToEnd(2);
       list.addToEnd(3);
 
-      expect(list.at(-1)).toEqual(3);
+      expect(list.at(-1)?.value).toEqual(3);
     });
   });
 
@@ -148,8 +148,25 @@ describe('Double Linked List', () => {
       const newList = list.map(i => i * 2);
       const root = newList.getRoot();
       expect(root?.value).toBe(6);
-      expect(root?.next?.value).toBe(6);
-      expect(root?.next?.value).toBe(6);
-    })
-  })
+      expect(root?.next?.value).toBe(4);
+      expect(root?.next?.next?.value).toBe(2);
+    });
+  });
+
+  describe('.delete(nth)', () => {
+    it('should delete the nth element of the list', () => {
+      const list = new DoubleLinkedList<number>();
+      list.addToEnd(1);
+      list.addToEnd(2);
+      list.addToEnd(3);
+      list.addToEnd(4);
+
+      list.delete(2);
+
+      const root = list.getRoot();
+      expect(root?.value).toBe(1);
+      expect(root?.next?.value).toBe(2);
+      expect(root?.next?.next?.value).toBe(4);      
+    });
+  });
 });
