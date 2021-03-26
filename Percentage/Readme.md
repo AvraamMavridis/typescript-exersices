@@ -1,0 +1,1 @@
+Implement a Percentage type that represents a value between 0 and 100. Values smaller than 0 should become 0, and values larger than 100 should become 100. It has a toFixed method that acts as the native one on the Number.
