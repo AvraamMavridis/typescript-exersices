@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2019",
     "module": "CommonJS",
     "downlevelIteration": true,
     "strict": true,
     "strictNullChecks": true
   },
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
 }

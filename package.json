@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +26,8 @@
     "preset": "ts-jest/presets/js-with-ts",
     "globals": {
       "ts-jest": {
-        "diagnostics": false
+        "diagnostics": false,
+        "tsconfig": "tsconfig.json"
       }
     },
     "testEnvironment": "node",
@@ -43,5 +45,8 @@
       "src/**/*.spec.ts"
     ],
     "exec": "npm run start"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
